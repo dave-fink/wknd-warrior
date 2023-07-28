@@ -1,7 +1,8 @@
 footer {
     padding: 2rem;
-    background-color: var(--overlay-background-color);
+    background: rgb(0 0 0 / 90%);
     font-size: var(--body-font-size-s);
+		color: #fff;
 
     .footer {
         max-width: 1200px;
