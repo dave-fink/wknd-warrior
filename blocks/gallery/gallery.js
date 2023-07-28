@@ -47,7 +47,7 @@ export default function decorate(block) {
 		// find current active thumb and get index
 		const active = block.querySelector('.active');
 		// get current index
-		const i = parseFloat(active.getAttribute('data-index'));
+		var i = parseFloat(active.getAttribute('data-index'));
 		// next n
 		var n;
 		// check direction
