@@ -14,53 +14,51 @@ export default function decorate(block) {
 	});
 
 	// add buttons for full screen viewing
-	const nextButton = document.createElement('button');
-	nextButton.type = 'button';
-	nextButton.textContent = '\u25BA';
-	nextButton.className = 'next';
-	nextButton.addEventListener('click', function () {
-		moveSlide('next');
+	const next = document.createElement('button');
+	next.type = 'button';
+	next.textContent = '\u25BA';
+	next.className = 'next';
+	next.addEventListener('click', function () {
+		go('next');
 	});
-	block.appendChild(nextButton);
+	block.appendChild(next);
 
-	const prevButton = document.createElement('button');
-	prevButton.type = 'button';
-	prevButton.textContent = '\u25C0';
-	prevButton.className = 'prev';
-	prevButton.addEventListener('click', function () {
-		moveSlide('prev');
+	const prev = document.createElement('button');
+	prev.type = 'button';
+	prev.textContent = '\u25C0';
+	prev.className = 'prev';
+	prev.addEventListener('click', function () {
+		go('prev');
 	});
-	block.appendChild(prevButton);
+	block.appendChild(prev);
 
-	const closeButton = document.createElement('button');
-	closeButton.type = 'button';
-	closeButton.textContent = '\u2715';
-	closeButton.className = 'close';
-	closeButton.addEventListener('click', function () {
+	const close = document.createElement('button');
+	close.type = 'button';
+	close.textContent = '\u2715';
+	close.className = 'close';
+	close.addEventListener('click', function () {
 		// remove classes
-		const CurrentActive = block.querySelector('.active');
-		CurrentActive.classList.remove('active');
+		const active = block.querySelector('.active');
+		active.classList.remove('active');
 		block.classList.remove('fullscreen');
 	});
-	block.appendChild(closeButton);
+	block.appendChild(close);
 
-
-	function moveSlide(direction) {
+	function go(to) {
 		// find current active thumb and get index
 		const active = block.querySelector('.active');
 		const index = active.getAttribute('data-index');
 		const i = parseFloat(index);
 		var n;
 		// check direction
-		if (direction == 'next') { n = i + 1; }
-		if (direction == 'prev') { n = i - 1; }
+		if (to == 'next') n = i + 1;  
+		if (to == 'prev') n = i - 1;
 		// if last slide go to the first
 		if (n == thumbs.length) n = 0;
 		// if first slide go to the last
 		if (n == -1) n = thumbs.length - 1;
 		// remove current active slide
-		const CurrentActive = block.querySelector('.active');
-		CurrentActive.classList.remove('active');
+		active.classList.remove('active');
 		// show new slide
 		thumbs[n].classList.add('active');
 	}
