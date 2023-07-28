@@ -6,11 +6,11 @@
 }
 .gallery::after {
   content: "";
-  flex-basis: 220px;
+  flex-basis: 180px;
 }
 .gallery > div {
   flex: 25%;
-  flex-basis: 220px;
+  flex-basis: 180px;
 }
 .gallery > div > div {
   position: relative;
