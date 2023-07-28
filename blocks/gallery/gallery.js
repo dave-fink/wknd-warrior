@@ -37,9 +37,8 @@ export default function decorate(block) {
 	close.textContent = '\u2715';
 	close.className = 'close';
 	close.addEventListener('click', function () {
-		// remove classes
-		const active = block.querySelector('.active');
-		active.classList.remove('active');
+		// remove fullscreen classes
+		block.querySelector('.active').classList.remove('active');
 		block.classList.remove('fullscreen');
 	});
 	block.appendChild(close);
@@ -47,8 +46,9 @@ export default function decorate(block) {
 	function go(to) {
 		// find current active thumb and get index
 		const active = block.querySelector('.active');
-		const index = active.getAttribute('data-index');
-		const i = parseFloat(index);
+		// get current index
+		const i = parseFloat(active.getAttribute('data-index'));
+		// next n
 		var n;
 		// check direction
 		if (to == 'next') n = i + 1;  
