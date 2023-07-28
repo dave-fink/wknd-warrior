@@ -1,0 +1,123 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.gallery::after {
+  content: "";
+  flex-basis: 220px;
+}
+.gallery > div {
+  flex: 25%;
+  flex-basis: 220px;
+}
+.gallery > div > div {
+  position: relative;
+  padding: 0;
+  margin: 10px 0 0 0;
+  cursor: pointer;
+}
+.gallery > div > div > p:nth-child(1) {
+  margin: 0;
+}
+.gallery > div > div > p:nth-child(1) img {
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+.gallery > div > div > p:nth-child(2) {
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(57, 57, 57, 0.502);
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  transition: all 0.2s 0.1s ease-in-out;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery > div > div:hover > p:nth-child(2) {
+  transform: scale(1);
+}
+.gallery button {
+  display: none;
+}
+.gallery.fullscreen > div > div.active {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery.fullscreen > div > div.active > p:nth-child(1) {
+  margin: 0;
+  height: inherit;
+  width: inherit;
+}
+.gallery.fullscreen > div > div.active > p:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.gallery.fullscreen > div > div.active > p:nth-child(2) {
+  width: auto !important;
+  height: auto;
+  padding: 6px 20px;
+  background: none;
+  top: auto;
+  left: auto;
+  bottom: 20px !important;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 22px;
+  transform: unset !important;
+  transition: none !important;
+}
+.gallery.fullscreen button {
+  display: block;
+  position: fixed;
+  top: 50%;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.gallery.fullscreen button:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.4);
+}
+.gallery.fullscreen button.next {
+  right: 10px;
+}
+.gallery.fullscreen button.prev {
+  left: 10px;
+}
+.gallery.fullscreen button.close {
+  top: 10px;
+  right: 10px;
+}

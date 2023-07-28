@@ -1,0 +1,94 @@
+// grid 5
+
+$thumb-width: 16.67% ;  // 100 / 6
+$thumb-height: 16.67%; // 100 / 5 
+
+.showcase {
+  position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	width: inherit;
+	
+
+	// all images
+	& > div {
+		position: absolute;
+		z-index: 2; // on top of big
+		width: $thumb-width;
+		height: $thumb-height; 
+		overflow: hidden;
+		border: 1px solid transparent;
+		opacity: .6;
+		filter: grayscale(100%);
+		cursor: pointer;
+		left: 0;
+		
+		&.active, &:hover {
+			z-index: 99;
+			//border: 1px solid #000;
+			opacity: 1;
+			filter: grayscale(0);
+		}
+		// Text Caption
+		&.active div:nth-child(2) {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			font-size: .9em;
+			font-weight: normal;
+			background: rgb(255, 255, 255, .6);
+			padding: 2px 8px;
+		}
+	}
+
+  // first one is large image
+	& .big {
+		top: 0; 
+    top: 0 !important;
+    left: $thumb-width !important;
+    width: inherit;
+  	height: $thumb-height * 6;
+		cursor: default;
+		opacity: 1;
+		filter: grayscale(0);
+		display: flex;
+		justify-content: center; 
+		align-items: center; 
+		img {
+			width: inherit;
+			height: auto !important;
+			object-fit: cover !important;
+		}
+		// caption
+		& div:nth-child(2) {
+			position: absolute;
+			width: auto !important;
+			height: auto;
+			padding: 6px 20px;
+			top: auto; // overide
+			bottom: 20px !important;
+			//left: 50%;
+			color: #fff;
+			background: rgb(0, 0, 0, .6);
+			border-radius: 22px;
+
+		}
+	}
+
+	// note the first "big" image is ignored
+  & > div:nth-child(2) {top: 0}
+	& > div:nth-child(3) {top: $thumb-height}
+  & > div:nth-child(4) {top: $thumb-height * 2}
+	& > div:nth-child(5) {top: $thumb-height * 3}
+  & > div:nth-child(6) {top: $thumb-height * 4}
+  & > div:nth-child(7) {top: $thumb-height * 5}
+
+
+} //.showcase
+
+
+
+
+
